@@ -1,0 +1,283 @@
+<!doctype html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>散客簡訊產生器</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <!-- 引入icon網站 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+  <!-- 頂部 -->
+  <header class="bg-dark text-light">
+    <div class="container d-flex justify-content-between align-items-center">
+      <h1 class="h2">日月光飯店-散客簡訊產生器</h1>
+      <a href="javascript:;" class="text-light refresh" id="refresh"><i class="bi bi-arrow-clockwise"></i> 重置頁面(雙擊)</a>
+    </div>
+  </header>
+  <!-- 主要部分 -->
+  <main class="container">
+    <nav>
+      <!-- 導航欄 -->
+      <ul class="nav nav-tabs">
+
+        <!-- 標準產生器書籤 -->
+        <li class="nav-item tabs" id="std-tab">
+          <a href="javascript:;" class="nav-link dropdown-toggle h4 link-dark px-5 active" data-bs-toggle="dropdown"
+            aria-expanded="false">標準</a>
+          <ul class="dropdown-menu container show">
+            <!-- 標準產生器頁面 -->
+            <li class="d-flex flex-column flex-lg-row row">
+              <!-- 左側輸入內容區 -->
+              <div class="col-12 col-lg-7">
+
+                <!-- 姓名/性別/提醒文字 -->
+                <div class="d-flex align-items-center row mb-4">
+                  <div class="col-4">
+                    <input type="text" class="form-control name" placeholder="姓名" autofocus>
+                  </div>
+                  <form action="" class="col-2 row ">
+
+                    <div class="form-check col-6 choose-block">
+                      <input class="form-check-input gender" type="radio" name="gender1" id="men1" value="先生" checked>
+                      <label class="form-check-label" for="men1">
+                        男
+                      </label>
+                    </div>
+                    <div class="form-check col-6 choose-block">
+                      <input class="form-check-input gender" type="radio" name="gender1" id="women1" value="小姐">
+                      <label class="form-check-label" for="women1">
+                        女
+                      </label>
+                    </div>
+
+                  </form>
+                  <span class="ms-1 col-5 text-danger fw-bold gender-tip"></span>
+                </div>
+
+
+                <!-- 入住日期/退房日期/天數/提醒文字 -->
+                <div class="flex-column mb-3">
+                  <div class="row mb-3">
+
+                    <!-- 入住 -->
+                    <div class="col-4">
+                      <div class="input-group">
+                        <span class="input-group-text fw-bold">入住</span>
+                        <input type="date" class="form-control check-in">
+                      </div>
+                    </div>
+                    <!-- 退房 -->
+                    <div class="col-4">
+                      <div class="input-group">
+                        <span class="input-group-text fw-bold">退房</span>
+                        <input type="date" class="form-control check-out">
+                      </div>
+                    </div>
+                    <!-- 幾日 -->
+                    <div class="col-2 col-xl-3 col-xxl-2">
+                      <div class="input-group">
+                        <input type="number" class="form-control days">
+                        <span class="input-group-text fw-bold">日</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 日期提示框 -->
+                  <div class="text-danger fw-bold date-hint"></div>
+                </div>
+
+
+
+                <!-- 房型/間數/價格/新增按鈕 -->
+                <div class="flex-column mb-4">
+                  <div class="d-flex align-items-center row mb-2">
+
+                    <!-- 下拉列表 -->
+                    <div class="col-3">
+                      <div class="input-group">
+                        <span class="input-group-text fw-bold">房型</span>
+                        <select class="form-select room-style">
+                          <option selected value="0"> -- </option>
+                          <option value="無窗雙人房">CQ</option>
+                          <option value="標準雙人房">SDS</option>
+                          <option value="經典雙人房">DS</option>
+                          <option value="雙人房兩小床">T2</option>
+                          <option value="標準家庭房">SDF</option>
+                          <option value="豪華家庭房">DF</option>
+                          <option value="四人房四小床">T4</option>
+                          <option value="無障礙家庭房">VDF</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <!-- 間數 -->
+                    <div class="col-2">
+                      <div class="input-group">
+                        <input type="number" class="form-control room-count" value="1">
+                        <span class="input-group-text fw-bold">間</span>
+                        </select>
+                      </div>
+                    </div>
+
+                    <!-- 房價 -->
+                    <div class="col-3">
+                      <div class="input-group">
+                        <input type="number" class="form-control room-rate" placeholder="金額(選填)">
+                        <span class="input-group-text fw-bold">元</span>
+                        </select>
+                      </div>
+                    </div>
+
+                    <!-- 新增及刪除鈕 -->
+                    <div class="col-3 d-flex justify-content-start">
+                      <a href="javascript:;" class="crt me-2">新增 +</a>
+                      <a href="javascript:;" class="del"></a>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- 加價優惠項目/金額 -->
+                <div class="flex-column mb-4">
+                  <div class="d-flex align-items-center row mb-2 extra-fee-wrapper">
+
+                    <div class="col-5">
+                      <div class="input-group">
+                        <button class="btn btn-outline-primary dropdown-toggle extra-fee-button" type="button"
+                          data-bs-toggle="dropdown" aria-expanded="false">加價項目</button>
+                        <ul class="dropdown-menu extra-fee-menu">
+                          <li><a class="dropdown-item extra-fee-list" href="javascript:;">加價項目</a></li>
+                          <li><a class="dropdown-item extra-fee-list" href="javascript:;">優惠項目</a></li>
+                          <li><a class="dropdown-item extra-fee-list birthday" href="javascript:;">壽星優惠</a></li>
+                          <li><a class="dropdown-item extra-fee-list longStay" href="javascript:;">續住優惠</a></li>
+                          <li>
+                            <hr class="dropdown-divider">
+                          </li>
+                          <li><a class="dropdown-item extra-fee-list cxl text-center" href="javascript:;">清空</a></li>
+                        </ul>
+                        <input type="text" class="form-control extra-fee-name dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Text input with dropdown button">
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item extra-input-list extra-bed" href="javascript:;">加床費</a></li>
+                          <li><a class="dropdown-item extra-input-list extra-people" href="javascript:;">人頭費</a></li>
+                          <li><a class="dropdown-item extra-input-list small-window d-none" href="javascript:;">小窗優惠</a></li>
+                        </ul>
+                        
+                      </div>
+                    </div>
+
+                    <!-- 加價金額 -->
+                    <div class="col-3">
+                      <div class="input-group">
+                        <input type="number" class="form-control extra-fee-count" placeholder="金額(選填)">
+                        <span class="input-group-text fw-bold">元</span>
+                      </div>
+                    </div>
+
+                    <!-- 新增鈕/刪除鈕/說明框 -->
+                    <div class="col-3 d-flex justify-content-start">
+                      <a href="javascript:;" class="crt me-2">新增 +</a>
+                      <a href="javascript:;" class="del"></a>
+
+                      <!-- 說明框 -->
+                      <div class="dropend question-mark ms-2">
+                        <a href="javascript:;" data-bs-toggle="dropdown" aria-expanded="false" title="點擊顯示算法說明">
+                          <i class="bi bi-question-diamond-fill"></i>
+                        </a>
+                        <div class="dropdown-menu p-2">
+
+                          <div class="hint-title fw-bold">算法說明:</div>
+
+                          <div class="e1">
+                            <div class="py-2">加價金額乘以天數。</div>
+                            <div class="text-muted">注意:此算法不因房間數而改變</div>
+                          </div>
+                          <div class="d1 d-none">
+                            <div class="py-2">優惠金額乘以天數。</div>
+                            <div class="text-muted">注意:此算法不因房間數而改變</div>
+                          </div>
+                          <div class="d2 d-none">
+                            <div class="py-2">壽星優惠為每天折扣優惠房價。</div>
+                            <div class="text-muted">注意:每間房間皆會套用此優惠。</div>
+                          </div>
+                          <div class="d3 d-none">
+                            <div class="py-2">續住優惠從第二天以後，每天折扣優惠房價。</div>
+                            <div class="text-muted">注意:每間房間皆會套用此優惠。</div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+
+                <!-- 選項按鈕(是否停車) -->
+                <div class="mb-4 d-flex">
+                  <div class="choose-block form-check me-4">
+                    <input class="form-check-input" type="checkbox" value="separate" id="separate" name="separate">
+                    <label class="form-check-label " for="separate">
+                      顯示每間房間原始單價
+                    </label>
+                  </div>
+                  <div class="choose-block form-check">
+                    <input class="form-check-input" type="checkbox" value="noParking" id="noParking" name="noParking">
+                    <label class="form-check-label" for="noParking">
+                      不含停車位
+                    </label>
+                  </div>
+                </div>
+
+
+                <!-- 送出按鈕 -->
+                <div class="d-flex justify-content-center mb-4">
+                  <button class="btn btn-outline-secondary fw-bold px-5 submit" type="button" id="submit1">送出</button>
+                </div>
+              </div>
+
+
+              <!-- 右側文字框區域 -->
+              <div class="col-12 col-lg-5">
+                <!-- 提示框(用以顯示錯誤提醒) -->
+
+                <div class="card mb-2">
+                  <div class="card-body">
+                    <span class="text-muted me-2">提示框</span>
+                    <span class="card-text text-danger remind fw-bold"></span>
+                  </div>
+                </div>
+                <label for="messageArea" class="form-label h3 pt-3">簡訊顯示區</label>
+                <textarea class="form-control message" id="messageArea" rows="10"></textarea>
+                <div class="mt-4 d-flex align-items-center">
+                  <button class="btn btn-outline-secondary fw-bold me-3" type="button">複製內容</button>
+                  <div class="text-success fw-bold ">**內容複製成功**</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item tabs">
+          <a href="javascript:;" class="nav-link disabled">多日價格</a>
+        </li>
+        <li class="nav-item tabs">
+          <a href="javascript:;" class="nav-link disabled">長住專案</a>
+        </li>
+      </ul>
+    </nav>
+  </main>
+
+
+
+
+</body>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/popper.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/index.js"></script>
+
+</html>

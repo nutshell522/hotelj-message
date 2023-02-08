@@ -1,0 +1,115 @@
+:root{
+    --font-size: 16px;
+    --hint-fontsize:18px;
+    --question-mark: #eda905;
+    --hint-font-size: 13;
+    --header-height: 70px;
+}
+
+*{
+    font-size: var(--font-size);
+}
+header .container{
+    height: var(--header-height);
+}
+header .container .refresh,
+header .container h1{
+    height: 100%;
+    line-height: var(--header-height);
+}
+header .container .refresh{
+    transition: 300mS;
+    font-size: 18px;
+    text-decoration: none;
+    display: block;
+    padding: 0 15px 0 15px;
+}
+header .container .refresh i{
+    transition: 300ms;
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+}
+header .container .refresh:hover{
+    background-color: #494949;
+    font-size: 20px;
+}
+header .container .refresh:hover i{
+    color: #ffbb17;
+    font-size: 30px;
+    animation: circle ease-in 0.8s infinite;
+}
+
+@keyframes circle {
+    0% {    
+        transform: rotate(0deg);
+        }
+    100% { 
+        transform: rotate(360deg); 
+    }
+  }
+
+.nav > .nav-item >.dropdown-menu{
+    top: 150px;
+    border: none;
+}
+
+
+.form-check:hover,.form-check-input:hover,.form-check-label:hover{
+    cursor: pointer;
+}
+
+.text-danger{
+    font-size: var(--hint-fontsize);
+}
+.date-hint{
+    height: var(--hint-fontsize) ;
+}
+
+
+select{
+    cursor: pointer;
+}
+
+.room-rate::-webkit-inner-spin-button, 
+.room-rate::-webkit-outer-spin-button,
+.extra-fee-count::-webkit-inner-spin-button, 
+.extra-fee-count::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+  margin: 0; 
+}
+
+/* 去除框框下拉三角形 */
+input::-webkit-calendar-picker-indicator {
+    display: none  !important;
+}
+
+datalist {
+    position: absolute;
+    max-height: 20em;
+    border: 0 none;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+
+.question-mark{
+    margin-left: -25px;
+
+}
+.question-mark i{
+    transition: 100ms;
+    color: gray;
+}
+.question-mark i:hover{
+    color: var(--question-mark);
+}
+.question-mark .dropdown-menu .hint-title{
+    font-size: 16px;
+}
+.question-mark .dropdown-menu div{
+    font-size: 13px;
+}
+.question-mark .dropdown-menu .text-muted{
+    font-size: 10px;
+}
